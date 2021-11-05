@@ -5,7 +5,7 @@ import com.chaitupenju.dogsinfo.data.network.dto.DogInfoDto
 
 interface DogRepository {
 
-    suspend fun getDog(): List<DogDto>
+    suspend fun getDogs(): List<DogDto>
 
     suspend fun getDogById(imageId: String): DogInfoDto
 }

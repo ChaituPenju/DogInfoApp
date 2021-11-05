@@ -25,7 +25,7 @@ data class DogDto(
     val temperament: String,
     @SerializedName("weight")
     val weight: Weight
-) {
+)
     fun DogDto.toDog(): Dog {
         return Dog(
             id = id,
@@ -36,7 +36,6 @@ data class DogDto(
             referenceImageId = referenceImageId
         )
     }
-}
 
 data class Height(
     @SerializedName("imperial")

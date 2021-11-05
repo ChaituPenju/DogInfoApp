@@ -15,7 +15,7 @@ data class DogInfoDto(
     val url: String,
     @SerializedName("width")
     val width: Int
-) {
+)
     fun DogInfoDto.toDogInfo(): DogInfo {
         with(breeds[0]) {
             return DogInfo(
@@ -29,7 +29,6 @@ data class DogInfoDto(
             )
         }
     }
-}
 
 data class Breed(
     @SerializedName("bred_for")
