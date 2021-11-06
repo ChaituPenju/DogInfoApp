@@ -1,5 +1,6 @@
 package com.chaitupenju.dogsinfo.di
 
+import com.chaitupenju.dogsinfo.BuildConfig
 import com.chaitupenju.dogsinfo.common.Constants
 import com.chaitupenju.dogsinfo.data.network.TheDogApi
 import com.chaitupenju.dogsinfo.data.repository.DogRepositoryImpl
@@ -8,9 +9,10 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.create
+import retrofit2.converter.moshi.MoshiConverterFactory
 import javax.inject.Singleton
 
 @Module
@@ -22,7 +24,8 @@ object AppModule {
     fun provideTheDogApi(): TheDogApi {
         return Retrofit.Builder()
             .baseUrl(Constants.DOG_BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
+            .addConverterFactory(MoshiConverterFactory.create())
+            .client(httpClient.build())
             .build()
             .create(TheDogApi::class.java)
     }

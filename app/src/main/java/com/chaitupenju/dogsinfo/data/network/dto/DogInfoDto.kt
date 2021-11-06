@@ -2,18 +2,18 @@ package com.chaitupenju.dogsinfo.data.network.dto
 
 
 import com.chaitupenju.dogsinfo.domain.model.DogInfo
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
 
 data class DogInfoDto(
-    @SerializedName("breeds")
+    @Json(name = "breeds")
     val breeds: List<Breed>,
-    @SerializedName("height")
+    @Json(name = "height")
     val height: Int,
-    @SerializedName("id")
+    @Json(name = "id")
     val id: String,
-    @SerializedName("url")
+    @Json(name = "url")
     val url: String,
-    @SerializedName("width")
+    @Json(name = "width")
     val width: Int
 )
     fun DogInfoDto.toDogInfo(): DogInfo {
@@ -31,22 +31,22 @@ data class DogInfoDto(
     }
 
 data class Breed(
-    @SerializedName("bred_for")
+    @Json(name = "bred_for")
     val bredFor: String,
-    @SerializedName("breed_group")
+    @Json(name = "breed_group")
     val breedGroup: String,
-    @SerializedName("height")
+    @Json(name = "height")
     val height: Height,
-    @SerializedName("id")
+    @Json(name = "id")
     val id: Int,
-    @SerializedName("life_span")
+    @Json(name = "life_span")
     val lifeSpan: String,
-    @SerializedName("name")
+    @Json(name = "name")
     val name: String,
-    @SerializedName("reference_image_id")
+    @Json(name = "reference_image_id")
     val referenceImageId: String,
-    @SerializedName("temperament")
+    @Json(name = "temperament")
     val temperament: String,
-    @SerializedName("weight")
+    @Json(name = "weight")
     val weight: Weight
 )

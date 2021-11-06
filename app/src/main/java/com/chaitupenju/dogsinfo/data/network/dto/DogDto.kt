@@ -2,28 +2,28 @@ package com.chaitupenju.dogsinfo.data.network.dto
 
 
 import com.chaitupenju.dogsinfo.domain.model.Dog
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
 
 data class DogDto(
-    @SerializedName("bred_for")
+    @field:Json(name = "bred_for")
     val bredFor: String,
-    @SerializedName("breed_group")
-    val breedGroup: String,
-    @SerializedName("height")
+    @field:Json(name = "breed_group")
+    val breedGroup: String?,
+    @field:Json(name = "height")
     val height: Height,
-    @SerializedName("id")
+    @field:Json(name = "id")
     val id: Int,
-    @SerializedName("image")
+    @field:Json(name = "image")
     val image: Image,
-    @SerializedName("life_span")
+    @field:Json(name = "life_span")
     val lifeSpan: String,
-    @SerializedName("name")
+    @field:Json(name = "name")
     val name: String,
-    @SerializedName("reference_image_id")
+    @field:Json(name = "reference_image_id")
     val referenceImageId: String,
-    @SerializedName("temperament")
+    @field:Json(name = "temperament")
     val temperament: String,
-    @SerializedName("weight")
+    @field:Json(name = "weight")
     val weight: Weight
 )
     fun DogDto.toDog(): Dog {
@@ -31,33 +31,33 @@ data class DogDto(
             id = id,
             name = name,
             image = image.url,
-            breedGroup = breedGroup,
+            breedGroup = breedGroup ?: "",
             lifeSpan = lifeSpan,
             referenceImageId = referenceImageId
         )
     }
 
 data class Height(
-    @SerializedName("imperial")
+    @field:Json(name = "imperial")
     val imperial: String,
-    @SerializedName("metric")
+    @field:Json(name = "metric")
     val metric: String
 )
 
 data class Image(
-    @SerializedName("height")
+    @field:Json(name = "height")
     val height: Int,
-    @SerializedName("id")
+    @field:Json(name = "id")
     val id: String,
-    @SerializedName("url")
+    @field:Json(name = "url")
     val url: String,
-    @SerializedName("width")
+    @field:Json(name = "width")
     val width: Int
 )
 
 data class Weight(
-    @SerializedName("imperial")
+    @field:Json(name = "imperial")
     val imperial: String,
-    @SerializedName("metric")
+    @field:Json(name = "metric")
     val metric: String
 )
