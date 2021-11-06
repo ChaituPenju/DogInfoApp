@@ -68,6 +68,9 @@ dependencies {
     implementation "com.squareup.okhttp3:okhttp:5.0.0-alpha.2"
     implementation "com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.2"
 
+    // COIL Lib (for Image Loading)
+    implementation("io.coil-kt:coil:1.4.0")
+
     // Testing Libs
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
