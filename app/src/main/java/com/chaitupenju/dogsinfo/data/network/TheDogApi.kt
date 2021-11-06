@@ -10,8 +10,8 @@ interface TheDogApi {
 
     @GET("/v1/breeds")
     suspend fun getDogs(
-        @Query("limit") limit: Int,
-        @Query("page") page: Int
+        @Query("limit") limit: Int? = null,
+        @Query("page") page: Int? = null
     ): List<DogDto>
 
     @GET("/v1/images/{imageId}")

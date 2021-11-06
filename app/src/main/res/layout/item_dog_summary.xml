@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="theDog"
+            type="com.chaitupenju.dogsinfo.domain.model.Dog" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="20dp"
+        app:contentPadding="8dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/mcv_dog_background"
+                android:layout_width="128dp"
+                android:layout_height="128dp"
+                app:cardCornerRadius="32dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/iv_dog_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:dogImage="@{theDog.image}"
+                    android:scaleType="fitXY"
+                    android:contentDescription="Dog Image"
+                    tools:src="@drawable/dog_loading" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/mtv_dog_name"
+                style="@style/TextAppearance.MaterialComponents.Headline5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text='@{theDog.id +". "+ theDog.name}'
+                app:layout_constraintStart_toEndOf="@+id/mcv_dog_background"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="1. Dog Name" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_breed_group"
+                style="@style/TextAppearance.MaterialComponents.Tooltip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text='@{theDog.breedGroup}'
+                app:chipBackgroundColor="@color/design_default_color_secondary"
+                app:layout_constraintStart_toEndOf="@+id/mcv_dog_background"
+                app:layout_constraintTop_toBottomOf="@+id/mtv_dog_name"
+                tools:text="Breed Group" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/mtv_breed_group"
+                style="@style/TextAppearance.MaterialComponents.Subtitle2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:text='@{"Lives For " + theDog.lifeSpan}'
+                app:chipBackgroundColor="@color/design_default_color_secondary"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/mcv_dog_background"
+                app:layout_constraintTop_toBottomOf="@+id/chip_breed_group"
+                tools:text="Lives For 18 - 24 years" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>

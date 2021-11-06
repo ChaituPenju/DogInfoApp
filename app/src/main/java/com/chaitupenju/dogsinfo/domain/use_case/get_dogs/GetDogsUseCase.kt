@@ -21,9 +21,11 @@ class GetDogsUseCase @Inject constructor(
             emit(Response.Success(data = dogs))
         }.onFailure {
             var errorMessage = "Some Error Occurred!"
-            when (it) {
-                is HttpException -> errorMessage = it.localizedMessage ?: errorMessage
-                is IOException -> errorMessage = "Please check your internet connection!"
+
+            errorMessage = when (it) {
+                is HttpException -> it.localizedMessage ?: "Some Http Error Occurred!"
+                is IOException -> "Please check your internet connection!"
+                else -> it.localizedMessage ?: errorMessage
             }
             emit(Response.Error<List<Dog>>(errorMessage))
         }

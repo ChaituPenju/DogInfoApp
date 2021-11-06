@@ -22,6 +22,13 @@ object AppModule {
     @Provides
     @Singleton
     fun provideTheDogApi(): TheDogApi {
+        val httpClient = OkHttpClient.Builder()
+
+        if (BuildConfig.DEBUG) {
+            val logging = HttpLoggingInterceptor()
+            logging.level = HttpLoggingInterceptor.Level.BODY
+            httpClient.addInterceptor(logging)
+        }
         return Retrofit.Builder()
             .baseUrl(Constants.DOG_BASE_URL)
             .addConverterFactory(MoshiConverterFactory.create())
