@@ -1,15 +1,17 @@
 package com.chaitupenju.dogsinfo.presentation.dog_list
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.viewModels
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.chaitupenju.dogsinfo.R
 import com.chaitupenju.dogsinfo.databinding.FragmentDogListBinding
+import com.chaitupenju.dogsinfo.presentation.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 
@@ -31,7 +33,20 @@ class DogListFragment : Fragment(R.layout.fragment_dog_list) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val dogsAdapter = DogListRecyclerView()
+        setupDogsListUI()
+    }
+
+    private fun setupDogsListUI() {
+        val dogsAdapter = DogListRecyclerView { dog ->
+            Toast.makeText(requireContext(), "Dog Name is ${dog.name}", Toast.LENGTH_SHORT).show()
+
+            (activity as MainActivity).navController.navigate(
+                DogListFragmentDirections.actionDogListFragmentToDogInfoFragment(
+                    dogImageId = dog.referenceImageId
+                )
+            )
+        }
+
         dogListBinding.rvDogsList.apply {
             adapter = dogsAdapter
         }
@@ -43,6 +58,5 @@ class DogListFragment : Fragment(R.layout.fragment_dog_list) {
                 }
             }
         }
-
     }
 }

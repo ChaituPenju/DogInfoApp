@@ -26,6 +26,7 @@ class GetDogUseCase @Inject constructor(
             when (it) {
                 is HttpException -> errorMessage = it.localizedMessage ?: errorMessage
                 is IOException -> errorMessage = "Please check your internet connection!"
+                else -> errorMessage = it.localizedMessage
             }
             emit(Response.Error<DogInfo>(errorMessage))
         }

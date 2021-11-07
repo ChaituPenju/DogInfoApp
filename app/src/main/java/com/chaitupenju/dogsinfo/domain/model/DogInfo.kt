@@ -6,6 +6,6 @@ data class DogInfo(
     val bredFor: String,
     val breedGroup: String,
     val lifeSpan: String,
-    val referenceImageId: String,
+    val imageUrl: String,
     val temperament: List<String>
 )

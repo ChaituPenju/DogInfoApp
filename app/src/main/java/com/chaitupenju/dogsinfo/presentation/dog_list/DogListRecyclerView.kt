@@ -9,7 +9,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.chaitupenju.dogsinfo.databinding.ItemDogSummaryBinding
 import com.chaitupenju.dogsinfo.domain.model.Dog
 
-class DogListRecyclerView: ListAdapter<Dog, DogListRecyclerView.DogListViewHolder>(object :
+class DogListRecyclerView(
+    private val onDogItemClick: (dog: Dog) -> Unit
+): ListAdapter<Dog, DogListRecyclerView.DogListViewHolder>(object :
     DiffUtil.ItemCallback<Dog>() {
     override fun areItemsTheSame(oldItem: Dog, newItem: Dog): Boolean {
         return oldItem.id == newItem.id
@@ -27,7 +29,12 @@ class DogListRecyclerView: ListAdapter<Dog, DogListRecyclerView.DogListViewHolde
         )
 
     override fun onBindViewHolder(holder: DogListViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        val dog = getItem(position)
+        holder.bind(dog)
+
+        holder.itemView.setOnClickListener {
+            onDogItemClick.invoke(dog)
+        }
     }
 
     inner class DogListViewHolder(private val dogSummaryBinding: ItemDogSummaryBinding): RecyclerView.ViewHolder(dogSummaryBinding.root) {

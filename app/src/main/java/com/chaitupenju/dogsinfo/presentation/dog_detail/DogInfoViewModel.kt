@@ -14,7 +14,7 @@ import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
 
 @HiltViewModel
-class DogInfoViewmodel @Inject constructor(
+class DogInfoViewModel @Inject constructor(
     private val getDogUseCase: GetDogUseCase,
     savedStateHandle: SavedStateHandle
 ): ViewModel() {
