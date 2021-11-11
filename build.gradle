@@ -10,6 +10,7 @@ buildscript {
         coroutineVersion = "1.5.2"
         lifecycleVersion = "2.4.0"
         coilVersion = "1.4.0"
+        shimmerVersion = "0.5.0"
     }
 
     repositories {

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="ShimmerStyle" parent="">
+        <item name="android:layout_gravity">center</item>
+        <item name="shimmer_clip_to_children">true</item>
+        <item name="android:orientation">vertical</item>
+        <item name="shimmer_auto_start">true</item>
+        <item name="shimmer_base_alpha">255</item>
+        <item name="shimmer_colored">true</item>
+        <item name="shimmer_duration">1200</item>
+        <item name="shimmer_base_color">#FFEFF0F1</item>
+        <item name="shimmer_highlight_color">#FFFFFFFF</item>
+    </style>
+</resources>

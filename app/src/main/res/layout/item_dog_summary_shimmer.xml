@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="20dp"
+        app:contentPadding="8dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/mcv_dog_background"
+                android:layout_width="128dp"
+                android:layout_height="128dp"
+                app:cardCornerRadius="32dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/iv_dog_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/shimmer_placeholder"
+                    android:contentDescription="Dog Image" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/mtv_dog_name"
+                style="@style/TextAppearance.MaterialComponents.Headline5"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/shimmer_placeholder"
+                app:layout_constraintStart_toEndOf="@+id/mcv_dog_background"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_breed_group"
+                style="@style/TextAppearance.MaterialComponents.Tooltip"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                app:textStartPadding="200dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                app:chipBackgroundColor="@color/shimmer_placeholder"
+                app:layout_constraintStart_toEndOf="@+id/mcv_dog_background"
+                app:layout_constraintTop_toBottomOf="@+id/mtv_dog_name" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/mtv_breed_group"
+                style="@style/TextAppearance.MaterialComponents.Subtitle2"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/shimmer_placeholder"
+                app:chipBackgroundColor="@color/design_default_color_secondary"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/mcv_dog_background"
+                app:layout_constraintTop_toBottomOf="@+id/chip_breed_group" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+</layout>

@@ -33,5 +33,38 @@
             app:layout_constraintTop_toBottomOf="@+id/toolbar_dog_list"
             tools:listitem="@layout/item_dog_summary" />
 
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/dogs_list_shimmer_layout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="8dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar_dog_list"
+            tools:visibility="visible">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <include layout="@layout/item_dog_summary_shimmer" />
+
+                <include layout="@layout/item_dog_summary_shimmer" />
+
+                <include layout="@layout/item_dog_summary_shimmer" />
+
+                <include layout="@layout/item_dog_summary_shimmer" />
+
+                <include layout="@layout/item_dog_summary_shimmer" />
+
+                <include layout="@layout/item_dog_summary_shimmer" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

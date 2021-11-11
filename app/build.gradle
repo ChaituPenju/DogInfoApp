@@ -71,6 +71,9 @@ dependencies {
     // COIL Lib (for Image Loading)
     implementation("io.coil-kt:coil:$coilVersion")
 
+    // Shimmer Effect library
+    implementation "com.facebook.shimmer:shimmer:$shimmerVersion"
+
     // Testing Libs
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

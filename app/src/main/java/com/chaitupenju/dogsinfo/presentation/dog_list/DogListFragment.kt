@@ -1,6 +1,5 @@
 package com.chaitupenju.dogsinfo.presentation.dog_list
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +9,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.chaitupenju.dogsinfo.R
+import com.chaitupenju.dogsinfo.common.hide
+import com.chaitupenju.dogsinfo.common.show
 import com.chaitupenju.dogsinfo.databinding.FragmentDogListBinding
 import com.chaitupenju.dogsinfo.presentation.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
@@ -53,8 +54,13 @@ class DogListFragment : Fragment(R.layout.fragment_dog_list) {
 
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
             dogsViewModel.state.collectLatest {
-                if (!it.isLoading && it.dogs.isNotEmpty()) {
-                    dogsAdapter.submitList(it.dogs)
+                when {
+                    it.isLoading -> dogListBinding.dogsListShimmerLayout.show()
+
+                    it.dogs.isNotEmpty() -> {
+                        dogListBinding.dogsListShimmerLayout.hide()
+                        dogsAdapter.submitList(it.dogs)
+                    }
                 }
             }
         }

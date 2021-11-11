@@ -7,7 +7,9 @@
         <entry key="..\:/Android_Projects/DogsInfo/app/src/main/res/layout/activity_main.xml" value="0.1793478260869565" />
         <entry key="..\:/Android_Projects/DogsInfo/app/src/main/res/layout/fragment_dog_info.xml" value="0.25679347826086957" />
         <entry key="..\:/Android_Projects/DogsInfo/app/src/main/res/layout/fragment_dog_list.xml" value="0.25679347826086957" />
+        <entry key="..\:/Android_Projects/DogsInfo/app/src/main/res/layout/item_dog_list_shimmer.xml" value="0.24864130434782608" />
         <entry key="..\:/Android_Projects/DogsInfo/app/src/main/res/layout/item_dog_summary.xml" value="0.4" />
+        <entry key="..\:/Android_Projects/DogsInfo/app/src/main/res/layout/item_dog_summary_shimmer.xml" value="0.4" />
       </map>
     </option>
   </component>
