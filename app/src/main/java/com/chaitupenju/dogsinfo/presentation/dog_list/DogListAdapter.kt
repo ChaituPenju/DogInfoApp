@@ -9,9 +9,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.chaitupenju.dogsinfo.databinding.ItemDogSummaryBinding
 import com.chaitupenju.dogsinfo.domain.model.Dog
 
-class DogListRecyclerView(
+class DogListAdapter(
     private val onDogItemClick: (dog: Dog) -> Unit
-): ListAdapter<Dog, DogListRecyclerView.DogListViewHolder>(object :
+): ListAdapter<Dog, DogListAdapter.DogListViewHolder>(object :
     DiffUtil.ItemCallback<Dog>() {
     override fun areItemsTheSame(oldItem: Dog, newItem: Dog): Boolean {
         return oldItem.id == newItem.id

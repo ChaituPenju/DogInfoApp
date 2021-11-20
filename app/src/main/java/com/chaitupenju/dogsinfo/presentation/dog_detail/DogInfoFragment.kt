@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import com.chaitupenju.dogsinfo.databinding.FragmentDogInfoBinding
+import com.chaitupenju.dogsinfo.presentation.DogActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 
@@ -32,6 +33,8 @@ class DogInfoFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        (requireActivity() as DogActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         setupDogInfoUI()
     }
 
@@ -40,8 +43,10 @@ class DogInfoFragment : Fragment() {
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
             dogInfoViewModel.state.collectLatest { dogInfoState ->
                 if (!dogInfoState.isLoading && dogInfoState.dog != null) {
-                    println(dogInfoState.dog)
                     dogInfoBinding.theDogInfo = dogInfoState.dog
+                    dogInfoBinding.rvTemperaments.adapter = DogTemperamentListAdapter().also {
+                        it.submitList(dogInfoState.dog.temperament)
+                    }
                 } else {
                     println("THE ERROR IS ${dogInfoState.error}")
                 }

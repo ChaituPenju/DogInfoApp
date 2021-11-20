@@ -31,7 +31,7 @@ data class DogDto(
             id = id,
             name = name,
             image = image.url,
-            breedGroup = breedGroup ?: "",
+            breedGroup = breedGroup ?: "No Info!",
             lifeSpan = lifeSpan,
             referenceImageId = referenceImageId
         )

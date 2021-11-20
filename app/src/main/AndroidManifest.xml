@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DogsInfo">
         <activity
-            android:name=".presentation.MainActivity"
+            android:name=".presentation.DogActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

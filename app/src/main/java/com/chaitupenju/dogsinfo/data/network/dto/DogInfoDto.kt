@@ -16,25 +16,12 @@ data class DogInfoDto(
     @field:Json(name = "width")
     val width: Int
 )
-    fun DogInfoDto.toDogInfo(): DogInfo {
-        with(breeds[0]) {
-            return DogInfo(
-                id = id,
-                name = name,
-                bredFor = bredFor,
-                breedGroup = breedGroup,
-                lifeSpan = lifeSpan,
-                imageUrl = url,
-                temperament = temperament.split(", ")
-            )
-        }
-    }
 
 data class Breed(
     @field:Json(name = "bred_for")
     val bredFor: String,
     @field:Json(name = "breed_group")
-    val breedGroup: String,
+    val breedGroup: String?,
     @field:Json(name = "height")
     val height: Height,
     @field:Json(name = "id")
@@ -50,3 +37,17 @@ data class Breed(
     @field:Json(name = "weight")
     val weight: Weight
 )
+
+fun DogInfoDto.toDogInfo(): DogInfo {
+    with(breeds[0]) {
+        return DogInfo(
+            id = id,
+            name = name,
+            bredFor = bredFor,
+            breedGroup = breedGroup ?: "No Info Available!",
+            lifeSpan = lifeSpan,
+            imageUrl = url,
+            temperament = temperament.split(", ")
+        )
+    }
+}

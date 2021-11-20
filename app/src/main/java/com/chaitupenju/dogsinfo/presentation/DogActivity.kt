@@ -10,7 +10,7 @@ import com.chaitupenju.dogsinfo.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity() {
+class DogActivity : AppCompatActivity() {
 
     private lateinit var activityMainBinding: ActivityMainBinding
     lateinit var navController: NavController
@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        activityMainBinding = DataBindingUtil.setContentView(this@MainActivity, R.layout.activity_main)
+        activityMainBinding = DataBindingUtil.setContentView(this@DogActivity, R.layout.activity_main)
 
         navController =
             (supportFragmentManager.findFragmentById(activityMainBinding.containerDogFragments.id) as NavHostFragment)

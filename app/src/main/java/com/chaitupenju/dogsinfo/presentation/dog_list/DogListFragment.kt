@@ -12,7 +12,7 @@ import com.chaitupenju.dogsinfo.R
 import com.chaitupenju.dogsinfo.common.hide
 import com.chaitupenju.dogsinfo.common.show
 import com.chaitupenju.dogsinfo.databinding.FragmentDogListBinding
-import com.chaitupenju.dogsinfo.presentation.MainActivity
+import com.chaitupenju.dogsinfo.presentation.DogActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 
@@ -38,10 +38,10 @@ class DogListFragment : Fragment(R.layout.fragment_dog_list) {
     }
 
     private fun setupDogsListUI() {
-        val dogsAdapter = DogListRecyclerView { dog ->
+        val dogsAdapter = DogListAdapter { dog ->
             Toast.makeText(requireContext(), "Dog Name is ${dog.name}", Toast.LENGTH_SHORT).show()
 
-            (activity as MainActivity).navController.navigate(
+            (activity as DogActivity).navController.navigate(
                 DogListFragmentDirections.actionDogListFragmentToDogInfoFragment(
                     dogImageId = dog.referenceImageId
                 )
