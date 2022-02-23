@@ -10,6 +10,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import com.chaitupenju.dogsinfo.databinding.FragmentDogInfoBinding
 import com.chaitupenju.dogsinfo.presentation.DogActivity
+import com.google.android.material.chip.Chip
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 
@@ -33,7 +34,9 @@ class DogInfoFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        (requireActivity() as DogActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        dogInfoBinding.toolbarDogInfo.setNavigationOnClickListener {
+            (requireActivity() as DogActivity).navController.navigateUp()
+        }
 
         setupDogInfoUI()
     }
@@ -44,8 +47,12 @@ class DogInfoFragment : Fragment() {
             dogInfoViewModel.state.collectLatest { dogInfoState ->
                 if (!dogInfoState.isLoading && dogInfoState.dog != null) {
                     dogInfoBinding.theDogInfo = dogInfoState.dog
-                    dogInfoBinding.rvTemperaments.adapter = DogTemperamentListAdapter().also {
-                        it.submitList(dogInfoState.dog.temperament)
+
+                    dogInfoState.dog.temperament.forEach {
+                        val dogChip = Chip(dogInfoBinding.root.context)
+                        dogChip.text = it
+
+                        dogInfoBinding.cgTemperaments.addView(dogChip)
                     }
                 } else {
                     println("THE ERROR IS ${dogInfoState.error}")

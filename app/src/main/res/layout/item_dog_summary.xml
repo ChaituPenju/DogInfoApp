@@ -44,11 +44,15 @@
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/mtv_dog_name"
                 style="@style/TextAppearance.MaterialComponents.Headline5"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
+                android:ellipsize="marquee"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:singleLine="true"
                 android:text='@{theDog.id +". "+ theDog.name}'
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/mcv_dog_background"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="1. Dog Name" />

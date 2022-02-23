@@ -59,6 +59,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
                     android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar"
+                    app:navigationIcon="@drawable/ic_arrow_back_24"
                     app:layout_collapseMode="pin"
                     app:layout_scrollFlags="scroll|enterAlways"
                     app:popupTheme="@style/ThemeOverlay.MaterialComponents.Light" />
@@ -83,40 +84,70 @@
                 android:layout_marginTop="12dp"
                 android:orientation="vertical">
 
-                <TextView
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/tv_bred_for"
                     style="@style/TextAppearance.MaterialComponents.Headline5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:drawablePadding="8dp"
                     android:text="@{theDogInfo.bredFor}"
+                    app:drawableStartCompat="@drawable/icon_bredfor"
+                    app:drawableTint="?attr/colorOnSurface"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:text="Bred For" />
 
-                <TextView
-                    android:id="@+id/tv_temperament_heading"
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/mtv_breed_group"
+                    style="@style/TextAppearance.MaterialComponents.Caption"
+                    android:textSize="20sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:drawablePadding="8dp"
+                    android:text="@{theDogInfo.breedGroup}"
+                    app:drawableStartCompat="@drawable/icon_breed"
+                    app:drawableTint="?attr/colorOnSurface"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_bred_for"
+                    app:flow_verticalAlign="center"
+                    tools:text="Breed Group" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_lifespan"
                     style="@style/TextAppearance.MaterialComponents.Caption"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:textColor="@color/black"
+                    android:drawablePadding="8dp"
+                    android:text="@{theDogInfo.lifeSpan}"
                     android:textSize="20sp"
+                    app:drawableLeftCompat="@drawable/icon_lifespan"
+                    app:drawableTint="?attr/colorOnSurface"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_bred_for"
-                    android:text="Temperament"
-                    tools:text="Temperament" />
+                    app:layout_constraintTop_toBottomOf="@id/mtv_breed_group"
+                    tools:text="X - Y years" />
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv_temperaments"
-                    android:layout_width="match_parent"
-                    android:layout_height="120dp"
-                    app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
-                    tools:listitem="@layout/item_dog_temperament"
-                    app:spanCount="4"
-                    app:stackFromEnd="true"
-                    tools:itemCount="8"
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/mtv_dog_temperament_heading"
+                    style="@style/TextAppearance.MaterialComponents.Headline6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_temperament_heading" />
+                    android:layout_marginVertical="12dp"
+                    android:text="Temperament"
+                    tools:text="Temperament"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_lifespan"
+                    />
+
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/cg_temperaments"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/mtv_dog_temperament_heading"
+                    tools:layout_height="100dp" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

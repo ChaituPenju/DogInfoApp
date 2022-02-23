@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.chaitupenju.dogsinfo.databinding.ItemDogSummaryBinding
 import com.chaitupenju.dogsinfo.domain.model.Dog
+import kotlinx.coroutines.*
 
 class DogListAdapter(
     private val onDogItemClick: (dog: Dog) -> Unit
@@ -41,6 +42,7 @@ class DogListAdapter(
 
         fun bind(dog: Dog) {
             dogSummaryBinding.theDog = dog
+            dogSummaryBinding.mtvDogName.isSelected = true // for marquee to scroll
         }
     }
 }
