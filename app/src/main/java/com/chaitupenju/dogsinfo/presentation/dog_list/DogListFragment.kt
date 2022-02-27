@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -12,6 +13,7 @@ import com.chaitupenju.dogsinfo.R
 import com.chaitupenju.dogsinfo.common.hide
 import com.chaitupenju.dogsinfo.common.show
 import com.chaitupenju.dogsinfo.databinding.FragmentDogListBinding
+import com.chaitupenju.dogsinfo.domain.model.Dog
 import com.chaitupenju.dogsinfo.presentation.DogActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -21,6 +23,8 @@ class DogListFragment : Fragment(R.layout.fragment_dog_list) {
 
     private lateinit var dogListBinding: FragmentDogListBinding
     private val dogsViewModel: DogListViewModel by viewModels()
+
+    private var dogsList: List<Dog> = emptyList()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -52,6 +56,18 @@ class DogListFragment : Fragment(R.layout.fragment_dog_list) {
             adapter = dogsAdapter
         }
 
+        dogListBinding.dogListSearch.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(p0: String?): Boolean {
+                return true
+            }
+
+            override fun onQueryTextChange(searchText: String?): Boolean {
+                dogsAdapter.submitList(dogsList.filter { dog -> dog.name.contains(searchText.toString()) })
+                return false
+            }
+
+        })
+
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
             dogsViewModel.state.collectLatest {
                 when {
@@ -60,6 +76,7 @@ class DogListFragment : Fragment(R.layout.fragment_dog_list) {
                     it.dogs.isNotEmpty() -> {
                         dogListBinding.dogsListShimmerLayout.hide()
                         dogsAdapter.submitList(it.dogs)
+                        dogsList = it.dogs
                     }
                 }
             }

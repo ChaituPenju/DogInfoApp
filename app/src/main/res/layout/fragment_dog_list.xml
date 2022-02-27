@@ -14,12 +14,26 @@
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
             android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar"
-            app:popupTheme="@style/ThemeOverlay.MaterialComponents.Light"
-            app:title="Dogs Info Application"
-            app:subtitle="Find the list of Dogs available on this Planet!"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:popupTheme="@style/ThemeOverlay.MaterialComponents.Light"
+            app:subtitle="Find the list of Dogs available on this Planet!"
+            app:title="Dogs Info Application" />
+
+        <SearchView
+            android:id="@+id/dog_list_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginHorizontal="16dp"
+            android:inputType="text"
+            android:queryHint="Search the dog..."
+            android:iconifiedByDefault="false"
+            android:background="@drawable/cornered_search_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar_dog_list" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_dogs_list"
@@ -30,7 +44,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar_dog_list"
+            app:layout_constraintTop_toBottomOf="@+id/dog_list_search"
             tools:listitem="@layout/item_dog_summary" />
 
         <com.facebook.shimmer.ShimmerFrameLayout
@@ -42,8 +56,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar_dog_list"
-            tools:visibility="visible">
+            app:layout_constraintTop_toBottomOf="@+id/dog_list_search"
+            tools:visibility="invisible">
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"

@@ -1,14 +1,13 @@
 package com.chaitupenju.dogsinfo.presentation.dog_list
 
 
-import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.chaitupenju.dogsinfo.common.getLayoutInflater
 import com.chaitupenju.dogsinfo.databinding.ItemDogSummaryBinding
 import com.chaitupenju.dogsinfo.domain.model.Dog
-import kotlinx.coroutines.*
 
 class DogListAdapter(
     private val onDogItemClick: (dog: Dog) -> Unit
@@ -25,7 +24,7 @@ class DogListAdapter(
 }) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = DogListViewHolder(
-        ItemDogSummaryBinding.inflate(LayoutInflater.from(parent.context),
+        ItemDogSummaryBinding.inflate(parent.getLayoutInflater(),
             parent, false)
         )
 
