@@ -2,13 +2,13 @@
 buildscript {
     ext {
         gradlePlugin = "7.0.2"
-        kotlinVersion = "1.5.31"
-        hiltVersion = "2.38.1"
-        navigationVersion = "2.3.5"
+        kotlinVersion = "1.6.10"
+        hiltVersion = "2.41"
+        navigationVersion = "2.4.1"
         retrofitVersion = "2.9.0"
         okhttpVersion = "5.0.0-alpha.2"
         coroutineVersion = "1.5.2"
-        lifecycleVersion = "2.4.0"
+        lifecycleVersion = "2.4.1"
         coilVersion = "1.4.0"
         shimmerVersion = "0.5.0"
     }
